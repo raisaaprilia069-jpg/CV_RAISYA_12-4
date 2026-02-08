@@ -13,22 +13,42 @@
             font-family: 'Poppins', sans-serif;
             background-color: #f0f7ff;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Animasi Bintang */
         .star {
             position: fixed;
             color: #3b82f6;
-            opacity: 0.3;
-            font-size: 1.5rem;
+            opacity: 0.2;
             pointer-events: none;
             z-index: 0;
-            animation: float 6s ease-in-out infinite;
+            animation: floatUpDown 5s ease-in-out infinite alternate;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
+        @keyframes floatUpDown {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+            100% { transform: translateY(-50px) rotate(20deg); opacity: 0.4; }
+        }
+
+        /* Animasi Muncul (Fade In) */
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animasi Foto Profil Melayang */
+        .profile-float {
+            animation: profileFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes profileFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .card {
@@ -38,6 +58,12 @@
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
             position: relative;
             z-index: 10;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
         }
 
         .profile-img {
@@ -46,6 +72,12 @@
             object-fit: cover;
             border: 5px solid #3b82f6;
             border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .profile-img:hover {
+            border-color: #1e40af;
+            transform: scale(1.05);
         }
 
         .section-title {
@@ -54,6 +86,23 @@
             margin-bottom: 15px;
             color: #1e40af;
             font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.5s ease;
+        }
+
+        section:hover .section-title::after {
+            width: 100%;
         }
 
         .timeline-item {
@@ -61,6 +110,12 @@
             padding-left: 20px;
             border-left: 2px solid #bfdbfe;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-left-color: #3b82f6;
+            padding-left: 25px;
         }
 
         .timeline-item::before {
@@ -72,22 +127,40 @@
             height: 12px;
             background: #3b82f6;
             border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.5);
+            background: #1e40af;
+        }
+
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background-color: #3b82f6;
+            color: white;
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body class="p-4 md:p-10">
 
-    <!-- Elemen Bintang Animasi -->
-    <i class="fas fa-star star" style="top: 10%; left: 5%; animation-delay: 0s;"></i>
-    <i class="fas fa-star star" style="top: 20%; right: 10%; animation-delay: 1s;"></i>
-    <i class="fas fa-star star" style="top: 50%; left: 8%; animation-delay: 2s;"></i>
-    <i class="fas fa-star star" style="top: 70%; right: 5%; animation-delay: 1.5s;"></i>
-    <i class="fas fa-star star" style="top: 85%; left: 15%; animation-delay: 2.5s;"></i>
+    <!-- Elemen Bintang Animasi (Lebih Banyak) -->
+    <i class="fas fa-star star text-sm" style="top: 5%; left: 10%; animation-delay: 0s;"></i>
+    <i class="fas fa-star star text-lg" style="top: 15%; right: 15%; animation-delay: 1s;"></i>
+    <i class="fas fa-star star text-xl" style="top: 40%; left: 5%; animation-delay: 2s;"></i>
+    <i class="fas fa-star star text-sm" style="top: 60%; right: 8%; animation-delay: 1.5s;"></i>
+    <i class="fas fa-star star text-md" style="top: 80%; left: 12%; animation-delay: 2.5s;"></i>
+    <i class="fas fa-star star text-xs" style="top: 25%; left: 30%; animation-delay: 3s;"></i>
+    <i class="fas fa-star star text-sm" style="bottom: 10%; right: 30%; animation-delay: 0.5s;"></i>
 
-    <div class="max-w-4xl mx-auto card p-6 md:p-12">
+    <div class="max-w-4xl mx-auto card p-6 md:p-12 fade-in">
         <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
             <!-- Foto Profil -->
-            <div class="flex-shrink-0">
+            <div class="flex-shrink-0 profile-float">
                 <img src="WhatsApp Image 2026-02-08 at 11.40.52.jpeg" alt="Foto Raisya Aprilia" class="profile-img">
             </div>
             
@@ -97,22 +170,22 @@
                 <p class="text-blue-600 font-medium text-lg mb-4">Fresh Graduate | Customer Service Oriented</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-600">
-                    <div class="flex items-center justify-center md:justify-start gap-2">
+                    <div class="flex items-center justify-center md:justify-start gap-2 hover:text-blue-600 transition-colors cursor-default">
                         <i class="fas fa-calendar-alt text-blue-500 w-5"></i>
                         <span>20 April 2007</span>
                     </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2">
+                    <div class="flex items-center justify-center md:justify-start gap-2 hover:text-blue-600 transition-colors cursor-default">
                         <i class="fas fa-phone text-blue-500 w-5"></i>
                         <span>085795363415</span>
                     </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2">
+                    <div class="flex items-center justify-center md:justify-start gap-2 hover:text-blue-600 transition-colors cursor-default">
                         <i class="fas fa-map-marker-alt text-blue-500 w-5"></i>
                         <span>Kp Bumi Sari RT 03 RW 11</span>
                     </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2">
+                    <a href="https://instagram.com/ryyaraii_" target="_blank" class="flex items-center justify-center md:justify-start gap-2 hover:text-blue-600 transition-colors">
                         <i class="fab fa-instagram text-blue-500 w-5"></i>
                         <span>@ryyaraii_</span>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -121,9 +194,9 @@
             <!-- Kolom Kiri -->
             <div class="md:col-span-1 space-y-8">
                 <!-- Tentang Diri -->
-                <section>
+                <section class="group">
                     <h2 class="section-title text-xl">Tentang Diri</h2>
-                    <p class="text-gray-600 text-sm leading-relaxed">
+                    <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-800 transition-colors">
                         Fresh graduate dari SMA KARYA PEMBANGUNAN BALEENDAH yang berorientasi pada pelayanan pelanggan. Senang mempelajari hal-hal baru dan cepat beradaptasi dalam lingkungan kerja yang dinamis.
                     </p>
                 </section>
@@ -132,19 +205,19 @@
                 <section>
                     <h2 class="section-title text-xl">Keahlian</h2>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Memasak</span>
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Pelayanan Pelanggan</span>
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Adaptasi Cepat</span>
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Manajemen Keuangan</span>
+                        <span class="skill-badge bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold cursor-default">Memasak</span>
+                        <span class="skill-badge bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold cursor-default">Pelayanan Pelanggan</span>
+                        <span class="skill-badge bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold cursor-default">Adaptasi Cepat</span>
+                        <span class="skill-badge bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold cursor-default">Manajemen Keuangan</span>
                     </div>
                 </section>
 
                 <!-- Hobby -->
                 <section>
                     <h2 class="section-title text-xl">Hobby</h2>
-                    <div class="flex items-center gap-3 text-gray-600">
-                        <i class="fas fa-volleyball-ball text-blue-500"></i>
-                        <span>Bermain Volly</span>
+                    <div class="flex items-center gap-3 text-gray-600 group">
+                        <i class="fas fa-volleyball-ball text-blue-500 group-hover:rotate-12 transition-transform"></i>
+                        <span class="group-hover:text-blue-600 transition-colors">Bermain Volly</span>
                     </div>
                 </section>
 
@@ -152,13 +225,13 @@
                 <section>
                     <h2 class="section-title text-xl">Bahasa</h2>
                     <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex justify-between">
+                        <li class="flex justify-between items-center group">
                             <span>Indonesia</span>
-                            <span class="font-semibold text-blue-600">Native</span>
+                            <span class="font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded group-hover:bg-blue-600 group-hover:text-white transition-all">Native</span>
                         </li>
-                        <li class="flex justify-between">
+                        <li class="flex justify-between items-center group">
                             <span>Inggris</span>
-                            <span class="font-semibold text-blue-600">Basic</span>
+                            <span class="font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded group-hover:bg-blue-600 group-hover:text-white transition-all">Basic</span>
                         </li>
                     </ul>
                 </section>
@@ -188,12 +261,12 @@
                 <!-- Pengalaman Organisasi -->
                 <section>
                     <h2 class="section-title text-xl">Pengalaman Organisasi</h2>
-                    <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500">
+                    <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500 hover:bg-blue-100 transition-colors duration-300">
                         <h3 class="font-bold text-blue-900">Anggota OSIS</h3>
                         <p class="text-sm font-medium text-blue-700 mb-3">SMA KARYA PEMBANGUNAN | 2024 - 2025</p>
                         <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
-                            <li>Menjabat sebagai <strong>Bendahara</strong>: Mengelola administrasi keuangan organisasi dengan teliti.</li>
-                            <li>Menjadi <strong>Sekbid Kewirausahaan</strong>: Merancang dan menjalankan program kreatif untuk pendanaan mandiri organisasi.</li>
+                            <li class="hover:translate-x-1 transition-transform">Menjabat sebagai <strong>Bendahara</strong>: Mengelola administrasi keuangan organisasi dengan teliti.</li>
+                            <li class="hover:translate-x-1 transition-transform">Menjadi <strong>Sekbid Kewirausahaan</strong>: Merancang dan menjalankan program kreatif untuk pendanaan mandiri organisasi.</li>
                         </ul>
                     </div>
                 </section>
@@ -202,9 +275,13 @@
 
         <!-- Footer -->
         <footer class="mt-12 pt-6 border-t border-gray-100 text-center text-gray-400 text-xs">
-            <p>&copy; 2024 Raisya Aprilia. Dibuat untuk CV Profesional.</p>
+            <p class="hover:text-blue-400 transition-colors cursor-default">&copy; 2024 Raisya Aprilia. Dibuat untuk CV Profesional.</p>
         </footer>
     </div>
 
+    <script>
+        // Opsional: Tambahkan sedikit interaksi JS jika diperlukan nantinya
+        console.log("CV Raisya Aprilia Loaded with Animations!");
+    </script>
 </body>
 </html>
