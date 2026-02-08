@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Raisya Aprilia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f7ff;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Bintang */
+        .star {
+            position: fixed;
+            color: #3b82f6;
+            opacity: 0.3;
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid #3b82f6;
+            border-radius: 50%;
+        }
+
+        .section-title {
+            border-left: 4px solid #3b82f6;
+            padding-left: 10px;
+            margin-bottom: 15px;
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #bfdbfe;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #3b82f6;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <!-- Elemen Bintang Animasi -->
+    <i class="fas fa-star star" style="top: 10%; left: 5%; animation-delay: 0s;"></i>
+    <i class="fas fa-star star" style="top: 20%; right: 10%; animation-delay: 1s;"></i>
+    <i class="fas fa-star star" style="top: 50%; left: 8%; animation-delay: 2s;"></i>
+    <i class="fas fa-star star" style="top: 70%; right: 5%; animation-delay: 1.5s;"></i>
+    <i class="fas fa-star star" style="top: 85%; left: 15%; animation-delay: 2.5s;"></i>
+
+    <div class="max-w-4xl mx-auto card p-6 md:p-12">
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+            <!-- Foto Profil -->
+            <div class="flex-shrink-0">
+                <img src="WhatsApp Image 2026-02-08 at 11.40.52.jpeg" alt="Foto Raisya Aprilia" class="profile-img">
+            </div>
+            
+            <!-- Nama dan Info Utama -->
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl md:text-4xl font-bold text-blue-900 mb-2">Raisya Aprilia</h1>
+                <p class="text-blue-600 font-medium text-lg mb-4">Fresh Graduate | Customer Service Oriented</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-600">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-calendar-alt text-blue-500 w-5"></i>
+                        <span>20 April 2007</span>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-phone text-blue-500 w-5"></i>
+                        <span>085795363415</span>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-map-marker-alt text-blue-500 w-5"></i>
+                        <span>Kp Bumi Sari RT 03 RW 11</span>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <i class="fab fa-instagram text-blue-500 w-5"></i>
+                        <span>@ryyaraii_</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Kolom Kiri -->
+            <div class="md:col-span-1 space-y-8">
+                <!-- Tentang Diri -->
+                <section>
+                    <h2 class="section-title text-xl">Tentang Diri</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Fresh graduate dari SMA KARYA PEMBANGUNAN BALEENDAH yang berorientasi pada pelayanan pelanggan. Senang mempelajari hal-hal baru dan cepat beradaptasi dalam lingkungan kerja yang dinamis.
+                    </p>
+                </section>
+
+                <!-- Keahlian -->
+                <section>
+                    <h2 class="section-title text-xl">Keahlian</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Memasak</span>
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Pelayanan Pelanggan</span>
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Adaptasi Cepat</span>
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Manajemen Keuangan</span>
+                    </div>
+                </section>
+
+                <!-- Hobby -->
+                <section>
+                    <h2 class="section-title text-xl">Hobby</h2>
+                    <div class="flex items-center gap-3 text-gray-600">
+                        <i class="fas fa-volleyball-ball text-blue-500"></i>
+                        <span>Bermain Volly</span>
+                    </div>
+                </section>
+
+                <!-- Bahasa -->
+                <section>
+                    <h2 class="section-title text-xl">Bahasa</h2>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex justify-between">
+                            <span>Indonesia</span>
+                            <span class="font-semibold text-blue-600">Native</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Inggris</span>
+                            <span class="font-semibold text-blue-600">Basic</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Kolom Kanan -->
+            <div class="md:col-span-2 space-y-8">
+                <!-- Pendidikan -->
+                <section>
+                    <h2 class="section-title text-xl">Pendidikan</h2>
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">SMA KP Baleendah</h3>
+                            <p class="text-sm text-blue-600">Lulus Tahun 2026</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">MTsN 1 BANDUNG</h3>
+                            <p class="text-sm text-blue-600">2021 - 2023</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">SD CIKOPO 1</h3>
+                            <p class="text-sm text-blue-600">2014 - 2020</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pengalaman Organisasi -->
+                <section>
+                    <h2 class="section-title text-xl">Pengalaman Organisasi</h2>
+                    <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900">Anggota OSIS</h3>
+                        <p class="text-sm font-medium text-blue-700 mb-3">SMA KARYA PEMBANGUNAN | 2024 - 2025</p>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
+                            <li>Menjabat sebagai <strong>Bendahara</strong>: Mengelola administrasi keuangan organisasi dengan teliti.</li>
+                            <li>Menjadi <strong>Sekbid Kewirausahaan</strong>: Merancang dan menjalankan program kreatif untuk pendanaan mandiri organisasi.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-6 border-t border-gray-100 text-center text-gray-400 text-xs">
+            <p>&copy; 2024 Raisya Aprilia. Dibuat untuk CV Profesional.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
